@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from './components/Header'
-import './App.css';
+import Order from './components/Order'
+import Inventory from './components/Inventory'
+import './css/style.css'
 
 class App extends Component {
   render() {
