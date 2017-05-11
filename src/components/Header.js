@@ -3,7 +3,16 @@ import React, { PureComponent } from 'react'
 class Header extends PureComponent {
   render() {
     return(
-      <p>Header</p>
+      <header className="top">
+        <h1>catch
+          <span className="ofThe">
+            <span className="of">of</span>
+            <span className="the">the</span>
+          </span>
+          day</h1>
+        <h3 className="tagLine"><span>{this.props.tagLine}</span></h3>
+
+      </header>
     )
   }
 }
