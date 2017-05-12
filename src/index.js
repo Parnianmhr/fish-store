@@ -5,7 +5,19 @@ import StorePicker from './components/StorePicker'
 import App from './App';
 import './css/style.css'
 
+const Root = () => {
+  return(
+    <BrowserRouter>
+      <div>
+        <Match exactly pattern="/" component={StorePicker}/>
+        <Match pattern="/store/:storeId" component={App}/>
+        <Miss component={NotFound}/>
+      </div>
+    </BrowserRouter>
+  )
+}
+
 ReactDOM.render(
-  <App />,
+  <Root />,
   document.getElementById('root')
 );
