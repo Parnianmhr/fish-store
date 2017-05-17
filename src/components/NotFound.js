@@ -4,7 +4,7 @@ class NotFound extends PureComponent {
 
   render() {
     return(
-      <p>Not Found</p>
+      <h2>Not Found</h2>
     )
   }
 }

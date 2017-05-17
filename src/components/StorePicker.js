@@ -3,7 +3,11 @@ import React, { PureComponent } from 'react'
 class StorePicker extends PureComponent {
   render() {
     return(
-      <h1>StorePicker</h1>
+      <form className="store-selector">
+        <h2>Please enter a store</h2>
+        <input type="text" required placeholder="Store name"/>
+        <button type="submit">Visit Store -></button>
+      </form>
     )
   }
 }
