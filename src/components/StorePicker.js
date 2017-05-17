@@ -5,8 +5,10 @@ class StorePicker extends PureComponent {
   goToStore(event) {
     event.preventDefault();
     //grab the text from the box
-    console.log(this.storeInput.value)
+    const storeId = this.storeInput.value
+    console.log(storeId)
     //transition form to store page
+    this.context.router.transitionTo(`/store/${storeId}`)
 
   }
 
@@ -20,6 +22,10 @@ class StorePicker extends PureComponent {
       </form>
     )
   }
+}
+
+StorePicker.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default StorePicker
