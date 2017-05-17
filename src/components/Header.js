@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react'
-
+import React from 'react'
+// stateless function
 const Header = (props) => {
     return(
       <header className="top">
@@ -10,7 +10,6 @@ const Header = (props) => {
           </span>
           day</h1>
         <h3 className="tagLine"><span>{props.tagLine}</span></h3>
-
       </header>
     )
 }

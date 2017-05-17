@@ -20,6 +20,6 @@ const Root = () => {
 
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  <Root />,
+  document.getElementById('main')
 );
