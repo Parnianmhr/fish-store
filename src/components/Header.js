@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 
-class Header extends PureComponent {
-  render() {
+const Header = (props) => {
     return(
       <header className="top">
         <h1>catch
@@ -10,11 +9,10 @@ class Header extends PureComponent {
             <span className="the">the</span>
           </span>
           day</h1>
-        <h3 className="tagLine"><span>{this.props.tagLine}</span></h3>
+        <h3 className="tagLine"><span>{props.tagLine}</span></h3>
 
       </header>
     )
-  }
 }
 
 export default Header
