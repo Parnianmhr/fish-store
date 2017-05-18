@@ -11,11 +11,13 @@ class AddFishForm extends PureComponent {
       image: this.image.value,
     }
     console.log(fish)
+    this.props.addFish(fish)
+    this.fishForm.reset()
   }
 
   render() {
     return(
-      <form className="fish-edit" onSubmit={this.createFish.bind(this)}>
+      <form ref={(input) => this.fishForm = input } className="fish-edit" onSubmit={this.createFish.bind(this)}>
         <input type="text" required placeholder="Fish name"
            ref={(input) => { this.name = input }}/>
         <input type="text" required placeholder="Fish price"
