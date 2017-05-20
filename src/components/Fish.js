@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { formatPrice } from '../helpers'
 
 class Fish extends PureComponent {
   render() {
@@ -6,7 +7,12 @@ class Fish extends PureComponent {
     return(
       <li className="menu-fish">
       <img src={details.image} alt={details.name} />
-      <h3 className=""></h3>
+      <h3 className="fish-name">
+        {details.name}
+        <span className="price">{formatPrice(details.price)}</span>
+      </h3>
+      <p>{details.desc}</p>
+      <button>Add to order</button>
       </li>
     )
   }
