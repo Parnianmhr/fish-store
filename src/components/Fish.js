@@ -3,7 +3,9 @@ import { formatPrice } from '../helpers'
 
 class Fish extends PureComponent {
   render() {
-  const { details } = this.props
+    const { details, index } = this.props
+    const isAvailable = details.status === 'available'
+    const buttonText = isAvailable ? 'Add to order' : 'Sold Out!'
     return(
       <li className="menu-fish">
       <img src={details.image} alt={details.name} />
@@ -12,7 +14,7 @@ class Fish extends PureComponent {
         <span className="price">{formatPrice(details.price)}</span>
       </h3>
       <p>{details.desc}</p>
-      <button>Add to order</button>
+      <button onClick={() => this.props.addToOrder(index)} disabled={!isAvailable}> {buttonText} </button>
       </li>
     )
   }

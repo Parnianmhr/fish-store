@@ -31,14 +31,24 @@ class App extends Component {
     this.setState({ fishes: sampleFishes })
   }
 
+  addToOrder(key) {
+    //take a copy of our order state
+    const order = {...this.state.oredr}
+    //update or add the new number of fish ordered
+    order[key] = order[key] + 1 || 1
+    //update our satet
+    this.setState({ order })
+
+  }
+
   render() {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
           <Header tagLine="Fresh seefood Market"/>
           <ul className="list-of-fishes">
-            {Object.keys(this.state.fishes).map(key => <Fish key={key}
-              details={this.state.fishes[key] }/>)}
+            {Object.keys(this.state.fishes).map(key => <Fish key={key} index={key}
+              details={this.state.fishes[key] } addToOrder={ this.addToOrder.bind(this) }/>)}
           </ul>
         </div>
         <Order />
