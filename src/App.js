@@ -38,7 +38,6 @@ class App extends Component {
     order[key] = order[key] + 1 || 1
     //update our satet
     this.setState({ order })
-
   }
 
   render() {
@@ -47,11 +46,13 @@ class App extends Component {
         <div className="menu">
           <Header tagLine="Fresh seefood Market"/>
           <ul className="list-of-fishes">
-            {Object.keys(this.state.fishes).map(key => <Fish key={key} index={key}
+            {Object
+              .keys(this.state.fishes)
+              .map(key => <Fish key={key} index={key}
               details={this.state.fishes[key] } addToOrder={ this.addToOrder.bind(this) }/>)}
           </ul>
         </div>
-        <Order />
+        <Order fishes={this.state.fishes} order={this.state.order}/>
         <Inventory addFish={ this.addFish.bind(this) } loadSamples={ this.loadSamples.bind(this) }/>
       </div>
     );
