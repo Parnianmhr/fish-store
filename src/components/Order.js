@@ -3,11 +3,6 @@ import { formatPrice } from '../helpers'
 
 class Order extends PureComponent {
 
-  constructor() {
-    super()
-    this.renderOrder = this.renderOrder.bind(this)
-  }
-
   renderOrder(key) {
     const fish = this.props.fishes[key]
     const count = this.props.order[key]
@@ -39,7 +34,7 @@ class Order extends PureComponent {
       <div className="order-wrap">
         <h2>Your order</h2>
         <ul className="order">
-          {orderId.map(this.renderOrder)}
+          {orderId.map(this.renderOrder.bind(this))}
           <li className="total">
             <strong> total: </strong>
               {formatPrice(total)}
