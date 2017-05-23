@@ -18,17 +18,35 @@ class App extends Component {
     }
   }
 
-componentWillMount() {
-  this.ref = base.syncState(`${this.props.params.storeId}/fishes`,
-  {
-    context: this,
-    state: 'fishes'
-  })
-}
+  componentWillMount() {
+    // this runs right before the <App> is rendered
+    this.ref = base.syncState(`${this.props.params.storeId}/fishes`,
+    {
+      context: this,
+      state: 'fishes'
+    })
+    //check if there is any order in localStorage
+    const localStorageRef = localStorage.getItem(`oredr-${this.props.params.storeId}`)
 
-componentWillUnmount() {
-  base.removeBinding(this.ref)
-}
+    if(localStorageRef) {
+      //update our app component's order state
+      this.setState({
+        order: JSON.parse(localStorageRef)
+      })
+    }
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref)
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('something changed!')
+    console.log({nextProps, nextState})
+    localStorage.setItem(`order-${this.props.params.storeId}`,
+    JSON.stringify(nextState.order))
+
+  }
 
   addFish(fish) {
     //update the state
@@ -62,11 +80,14 @@ componentWillUnmount() {
             {Object
               .keys(this.state.fishes)
               .map(key => <Fish key={key} index={key}
-              details={this.state.fishes[key] } addToOrder={ this.addToOrder.bind(this) }/>)}
+              details={this.state.fishes[key]} addToOrder={this.addToOrder.bind(this) }/>)}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order}/>
-        <Inventory addFish={ this.addFish.bind(this) } loadSamples={ this.loadSamples.bind(this) }/>
+        <Order fishes={this.state.fishes}
+               order={this.state.order}
+               params={this.props.params}
+               />
+        <Inventory addFish={ this.addFish.bind(this)} loadSamples={ this.loadSamples.bind(this) }/>
       </div>
     );
   }
