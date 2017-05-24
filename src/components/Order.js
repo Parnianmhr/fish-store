@@ -8,7 +8,7 @@ class Order extends PureComponent {
     const count = this.props.order[key]
     const removeButton = <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
 
-    if(!fish || fish.status === 'UnAvailable') {
+    if(!fish || fish.status === 'unavailable') {
       return <li key={key}>Sorry, {fish ? fish.name : 'fish'} is no longer available! {removeButton}</li>
     }
 
@@ -25,7 +25,7 @@ class Order extends PureComponent {
     const total = orderId.reduce((prevTotal, key) => {
       const fish = this.props.fishes[key]
       const count = this.props.order[key]
-      const isAvailable = fish && fish.status === "available"
+      const isAvailable = fish && fish.status === "Available"
       if (isAvailable) {
         return prevTotal + (count * fish.price || 0)
       }

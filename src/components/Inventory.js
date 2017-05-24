@@ -24,8 +24,8 @@ class Inventory extends PureComponent {
           onChange={(e) => this.handleChange(e, key)}/>
         <select type="text" name="status" value={fish.status} placeholder="Fish status"
           onChange={(e) => this.handleChange(e, key)}>
-          <option value="Available">Fresh!</option>
-          <option value="UnAvailable">Sold out!</option>
+          <option value="available">Fresh!</option>
+          <option value="unavailable">Sold out!</option>
         </select>
         <textarea type="text" name="desc" value={fish.desc} placeholder="Fish desc"
           onChange={(e) => this.handleChange(e, key)}></textarea>

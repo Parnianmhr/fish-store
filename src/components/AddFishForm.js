@@ -23,8 +23,8 @@ class AddFishForm extends PureComponent {
         <input type="text" required placeholder="Fish price"
           ref={(input) => { this.price = input }}/>
         <select ref={(input) => { this.status = input }}>
-          <option value="Available">Fresh!</option>
-          <option value="UnAvailable">Sold out!</option>
+          <option value="available">Fresh!</option>
+          <option value="unavailable">Sold out!</option>
         </select>
         <textarea type="text" required placeholder="Fish desc"
               ref={(input) => { this.desc = input }}></textarea>
