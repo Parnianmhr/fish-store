@@ -64,8 +64,9 @@ class App extends Component {
   }
 
   removeFish(key) {
-    const fishes = {...this.satet.fishes}
-    delete fishes[key]
+    const fishes = {...this.state.fishes}
+    fishes[key] = null
+    this.setState({ fishes })
   }
 
 
@@ -102,6 +103,7 @@ class App extends Component {
                    loadSamples={ this.loadSamples.bind(this)}
                    fishes={this.state.fishes}
                    updateFish={this.updateFish.bind(this)}
+                   removeFish={this.removeFish.bind(this)}
                    />
       </div>
     );

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import AddFishForm from './AddFishForm'
 
 class Inventory extends PureComponent {
-  
+
   handleChange(e, key) {
     const fish = this.props.fishes[key]
     //take a copy of that fish and update it with the new data
@@ -31,6 +31,7 @@ class Inventory extends PureComponent {
           onChange={(e) => this.handleChange(e, key)}></textarea>
         <input type="text" name="image" value={fish.image} placeholder="Fish image"
           onChange={(e) => this.handleChange(e, key)}/>
+        <button onClick={() => this.props.removeFish(key)}>Remove fish</button>
       </div>
     )
   }
