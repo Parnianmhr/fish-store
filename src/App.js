@@ -24,7 +24,7 @@ class App extends Component {
     {
       context: this,
       state: 'fishes'
-    })
+    });
     //check if there is any order in localStorage
     const localStorageRef = localStorage.getItem(`oredr-${this.props.params.storeId}`)
 
@@ -45,7 +45,6 @@ class App extends Component {
     console.log({nextProps, nextState})
     localStorage.setItem(`order-${this.props.params.storeId}`,
     JSON.stringify(nextState.order))
-
   }
 
   addFish(fish) {
@@ -87,7 +86,10 @@ class App extends Component {
                order={this.state.order}
                params={this.props.params}
                />
-        <Inventory addFish={ this.addFish.bind(this)} loadSamples={ this.loadSamples.bind(this) }/>
+        <Inventory addFish={ this.addFish.bind(this)}
+                   loadSamples={ this.loadSamples.bind(this)}
+                   fishes={this.state.fishes}
+                   />
       </div>
     );
   }
