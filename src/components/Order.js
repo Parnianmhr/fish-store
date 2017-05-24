@@ -25,7 +25,7 @@ class Order extends PureComponent {
     const total = orderId.reduce((prevTotal, key) => {
       const fish = this.props.fishes[key]
       const count = this.props.order[key]
-      const isAvailable = fish && fish.status === "Available"
+      const isAvailable = fish && fish.status === "available"
       if (isAvailable) {
         return prevTotal + (count * fish.price || 0)
       }
