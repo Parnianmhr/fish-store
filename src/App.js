@@ -41,8 +41,8 @@ class App extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log('something changed!')
-    console.log({nextProps, nextState})
+    // console.log('something changed!')
+    // console.log({nextProps, nextState})
     localStorage.setItem(`order-${this.props.params.storeId}`,
     JSON.stringify(nextState.order))
   }
@@ -56,6 +56,18 @@ class App extends Component {
     //set satet
     this.setState({ fishes })
   }
+
+  updateFish(key, updatedFish) {
+    const fishes = {...this.state.fishes}
+    fishes[key] = updatedFish
+    this.setState({ fishes })
+  }
+
+  removeFish(key) {
+    const fishes = {...this.satet.fishes}
+    delete fishes[key]
+  }
+
 
   loadSamples() {
     this.setState({ fishes: sampleFishes })
@@ -86,9 +98,10 @@ class App extends Component {
                order={this.state.order}
                params={this.props.params}
                />
-        <Inventory addFish={ this.addFish.bind(this)}
+        <Inventory addFish={this.addFish.bind(this)}
                    loadSamples={ this.loadSamples.bind(this)}
                    fishes={this.state.fishes}
+                   updateFish={this.updateFish.bind(this)}
                    />
       </div>
     );

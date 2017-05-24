@@ -2,11 +2,7 @@ import React, { PureComponent } from 'react'
 import AddFishForm from './AddFishForm'
 
 class Inventory extends PureComponent {
-  // constructor() {
-  //   super()
-  //   this.handleChange = this.handleChange.bind(this)
-  // }
-  //
+  
   handleChange(e, key) {
     const fish = this.props.fishes[key]
     //take a copy of that fish and update it with the new data
@@ -14,7 +10,8 @@ class Inventory extends PureComponent {
     ...fish,
     [e.target.name]: e.target.value
     }
-    console.log(updatedFish)
+    this.props.updateFish(key, updatedFish)
+    // console.log(updatedFish)
   }
 
   renderInventory(key) {
@@ -23,13 +20,17 @@ class Inventory extends PureComponent {
       <div className="fish-edit" key={key}>
         <input type="text" name="name" value={fish.name} placeholder="Fish name"
           onChange={(e) => this.handleChange(e, key)}/>
-        <input type="text" name="price" value={fish.price} placeholder="Fish price"/>
-        <select type="text" name="status" value={fish.status} placeholder="Fish status">
+        <input type="text" name="price" value={fish.price} placeholder="Fish price"
+          onChange={(e) => this.handleChange(e, key)}/>
+        <select type="text" name="status" value={fish.status} placeholder="Fish status"
+          onChange={(e) => this.handleChange(e, key)}>
           <option value="Available">Fresh!</option>
           <option value="UnAvailable">Sold out!</option>
         </select>
-        <textarea type="text" name="desc" value={fish.desc} placeholder="Fish desc"></textarea>
-        <input type="text" name="image" value={fish.image} placeholder="Fish image"/>
+        <textarea type="text" name="desc" value={fish.desc} placeholder="Fish desc"
+          onChange={(e) => this.handleChange(e, key)}></textarea>
+        <input type="text" name="image" value={fish.image} placeholder="Fish image"
+          onChange={(e) => this.handleChange(e, key)}/>
       </div>
     )
   }
